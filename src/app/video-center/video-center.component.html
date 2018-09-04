@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-9">
+    <div *ngIf="showInterBlock">
+      <form #form="ngForm" (ngSubmit)="addVideo(form)">
+        <input type="text" name="title" ngModel placeholder="Title" autofocus>
+        <input type="text" name="url" ngModel placeholder="url">
+        <textarea name="description" id="description" cols="30" rows="10" ngModel placeholder="Description"></textarea>
+        <button type='submit'> Submit</button>
+      </form>
+    </div>
+
+    <app-video-detail [selectedVideo]='selectedVideo'>
+    </app-video-detail>
+  </div>
+  <div class="col-sm-3">
+    <app-video-list (emitUrl)="url($event)" [videos]="videos">
+    </app-video-list>
+
+    <button (click)="showInterBlock=true"> Add video </button>
+  </div>
+</div>

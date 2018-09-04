@@ -1,0 +1,28 @@
+<div>
+  <h2>
+    Video Details
+  </h2>
+  <div *ngIf='selectedVideo'>
+
+    <div>
+      <iframe [src]="selectedVideo.url | sanitize" width='100%' height="450" allowfullscreen> </iframe>
+    </div>
+    <form>
+      <input type="text" [(ngModel)]="selectedVideo.title" placeholder="Title" name="title" *ngIf="editTile">
+      <h3 (click)="editTile=true" *ngIf="!editTile"> Edit Title </h3>
+      <br>
+
+      <input type="text" [(ngModel)]="selectedVideo.url" placeholder="Url" name="url" *ngIf="editUrl">
+      <h3 (click)="editUrl=true" *ngIf="!editUrl"> Edit Url </h3>
+      <br>
+
+      <textarea *ngIf="editDescription" name="description" cols="30" rows="10" [(ngModel)]="selectedVideo.description" placeholder="description"></textarea>
+      <h3 (click)="editDescription=true" *ngIf="!editDescription"> Edit Description </h3>
+      <br>
+
+      <button (click)="addVideo()" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
